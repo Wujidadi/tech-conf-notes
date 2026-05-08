@@ -1,0 +1,55 @@
+hugoblox:
+  schema: "2.0"
+
+  identity:
+    name: "Tech Events Notes"
+    organization: "Tech Events Notes"
+    type: organization
+    tagline: "技術會議／活動筆記"
+    description: "技術會議／活動筆記"
+
+  theme:
+    mode: system
+    pack: default
+
+  typography:
+    pack: modern
+
+  layout:
+    radius: md
+    spacing: comfortable
+
+  header:
+    enable: true
+    style: navbar
+    sticky: true
+    align: center
+    search: true
+    theme_toggle: true
+    theme_picker: false
+    language_switcher: false
+
+  footer:
+    style: minimal
+    language_switcher: false
+    text: "技術會議／活動筆記"
+
+  content:
+    toc:
+      enable: true
+    reading_time:
+      enable: false
+
+  search:
+    enable: true
+
+  comments:
+    enable: false
+
+  repository:
+    enable: false
+
+  locale:
+    date_format: "2006-01-02"
+    time_format: "15:04"
+    address_format: zh-tw

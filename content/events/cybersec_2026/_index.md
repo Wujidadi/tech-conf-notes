@@ -1,6 +1,6 @@
 ---
 title: "CYBERSEC 2026 臺灣資安大會"
-showList: false
+weight: 2
 ---
 
 > 2026-05-05 - 2026-05-07 @ [南港展覽館 2 館](https://maps.app.goo.gl/r3AdysEZiN3SQkCy6)

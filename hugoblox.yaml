@@ -1,0 +1,7 @@
+build:
+  hugo_version: "0.161.1"
+deploy:
+  host: "github-pages"
+template:
+  id: "documentation"
+  name: "Documentation"

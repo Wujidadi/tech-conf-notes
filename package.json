@@ -1,5 +1,17 @@
 {
-  "workspaces": [
-    "packages/hugoautogen"
-  ]
+  "name": "tech-events-notes",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tech events documentation site powered by HugoBlox Easy Docs.",
+  "scripts": {
+    "dev": "hugo server --disableFastRender",
+    "build": "hugo --minify && pagefind --site public"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.12",
+    "@tailwindcss/typography": "^0.5.10",
+    "pagefind": "^1.4.0",
+    "preact": "^10.27.2",
+    "tailwindcss": "^4.1.12"
+  }
 }

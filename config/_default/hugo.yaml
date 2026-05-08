@@ -1,0 +1,75 @@
+title: "Tech Events Notes"
+baseURL: "/"
+
+cascade:
+  - target:
+      path: /events/**
+    type: docs
+    editable: false
+    show_breadcrumb: true
+    show_date: false
+    show_date_updated: false
+
+defaultContentLanguage: zh-tw
+hasCJKLanguage: true
+defaultContentLanguageInSubdir: false
+removePathAccents: false
+
+build:
+  writeStats: true
+
+enableGitInfo: false
+summaryLength: 30
+
+pagination:
+  pagerSize: 10
+
+enableEmoji: true
+enableRobotsTXT: true
+footnotereturnlinkcontents: <sup>^</sup>
+ignoreFiles: [".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "_cache$"]
+enableInlineShortcodes: true
+disableAliases: true
+
+outputs:
+  home: [HTML, RSS, WebAppManifest, headers, redirects, backlinks]
+  page: [HTML]
+  section: [HTML, RSS]
+
+imaging:
+  resampleFilter: lanczos
+  quality: 90
+  anchor: smart
+  hint: picture
+
+timeout: 600000
+
+taxonomies:
+  tag: tags
+  category: categories
+  author: authors
+
+markup:
+  _merge: deep
+  goldmark:
+    renderer:
+      unsafe: true
+
+related:
+  threshold: 80
+  includeNewer: true
+  toLower: true
+  indices:
+    - name: tags
+      weight: 100
+    - name: categories
+      weight: 70
+
+security:
+  _merge: deep
+
+sitemap:
+  _merge: deep
+
+minify:
+  _merge: deep

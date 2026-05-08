@@ -1,0 +1,4 @@
+github.com/HugoBlox/kit/modules/analytics v0.3.2 h1:kg/th7kAgETFgCJCiFZfLjAC/KAVeFxlExVlOjNg0jE=
+github.com/HugoBlox/kit/modules/analytics v0.3.2/go.mod h1:lEEX95UxzXCMulsg51SIkOtlrj3nKU99fAOV+rQ91bw=
+github.com/HugoBlox/theme-documentation v0.0.0-20260502203529-ad1ee87eacea h1:iSdtVQMQehHtlRUXGD4OGlxn1nVfZrCH3TJn99Nc8uc=
+github.com/HugoBlox/theme-documentation v0.0.0-20260502203529-ad1ee87eacea/go.mod h1:7bjLX/wnuHMzJn/V+EKzWm/FXLazwNOO6TwDSlp2Nr4=

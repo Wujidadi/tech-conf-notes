@@ -1,0 +1,9 @@
+main:
+  - name: 首頁
+    url: /
+    weight: 10
+  - name: 活動列表
+    url: events/
+    weight: 20
+
+sidebar: []

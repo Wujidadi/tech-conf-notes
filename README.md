@@ -2,18 +2,25 @@
 
 技術會議／活動筆記。
 
-## Hugo 結構
+## 主題與結構
 
 - `content/`：站台內容（首頁、活動列表、各活動與講題筆記）
 - `static/`：講題附件與其他靜態檔案
-- `themes/hugo-theme-bootstrap`：Bootstrap Theme for Personal Blog and Documentations 主題 submodule
-- `layouts/`：針對主題保留的少量覆寫（例如 Markdown 連結、標題與列表行為）
-- `packages/hugoautogen/`、`package.json`、`package-lock.json`：由 `hugo mod npm pack` 產生的前端相依描述
+- `config/_default/`、`hugoblox.yaml`：Easy Docs / HugoBlox 設定
+- `go.mod`、`go.sum`：Hugo Module 相依
+- `package.json`、`package-lock.json`：Tailwind 與 Pagefind 前端相依
+- `layouts/_default/_markup/render-link.html`：保留相對 `.md` 與附件連結的自訂轉換
 
 ## 安裝
 
 ```bash
-git submodule update --init --recursive
+npm ci
+```
+
+首次安裝或更新 Hugo Module 後，可先跑一次：
+
+```bash
+hugo mod get ./...
 npm ci
 ```
 
@@ -22,6 +29,5 @@ npm ci
 ```bash
 npm ci
 hugo --minify
+npx pagefind --site public
 ```
-
-首次切換主題或更新主題版本後，若需要重整前端相依，可執行 `hugo mod npm pack` 後再重新執行 `npm install` 或 `npm ci`。

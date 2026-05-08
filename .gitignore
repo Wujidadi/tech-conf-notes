@@ -101,7 +101,6 @@ npm-debug.log
 yarn-error.log
 
 # Laravel 4 specific
-bootstrap/compiled.php
 app/storage/
 
 # Laravel 5 & Lumen specific
