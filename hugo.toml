@@ -1,5 +1,5 @@
 baseURL = "/"
-languageCode = "zh-tw"
+locale = "zh-tw"
 title = "Markdown Docs"
 hasCJKLanguage = true
 
