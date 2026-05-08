@@ -32,7 +32,6 @@ jobs:
       - name: Create temporary Hugo site
         run: |
           mkdir -p /tmp/hugo/content
-          mkdir -p /tmp/hugo/layouts/_default
 
           # 複製 Markdown 到 Hugo content
           rsync -av \
@@ -46,81 +45,16 @@ jobs:
             mv /tmp/hugo/content/index.md /tmp/hugo/content/_index.md
           fi
 
-          cat > /tmp/hugo/hugo.toml <<'EOF'
-          baseURL = "/"
-          languageCode = "zh-tw"
-          title = "Markdown Docs"
-          hasCJKLanguage = true
+          cp ./hugo.toml /tmp/hugo/hugo.toml
+          rsync -av ./layouts/ /tmp/hugo/layouts/
 
-          [markup]
-            [markup.goldmark]
-              [markup.goldmark.renderer]
-                unsafe = true
-          EOF
+          if [ -d ./static ]; then
+            rsync -av ./static/ /tmp/hugo/static/
+          fi
 
-          cat > /tmp/hugo/layouts/_default/baseof.html <<'EOF'
-          <!doctype html>
-          <html lang="zh-Hant">
-          <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
-            <style>
-              body {
-                max-width: 900px;
-                margin: 2rem auto;
-                padding: 0 1rem;
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-                line-height: 1.7;
-              }
-              code, pre {
-                font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-              }
-              pre {
-                padding: 1rem;
-                overflow: auto;
-                background: #f6f8fa;
-              }
-              a {
-                color: #0969da;
-              }
-            </style>
-          </head>
-          <body>
-            <main>
-              {{ block "main" . }}{{ end }}
-            </main>
-          </body>
-          </html>
-          EOF
-
-          cat > /tmp/hugo/layouts/_default/single.html <<'EOF'
-          {{ define "main" }}
-            <article>
-              {{ .Content }}
-            </article>
-          {{ end }}
-          EOF
-
-          cat > /tmp/hugo/layouts/_default/list.html <<'EOF'
-          {{ define "main" }}
-            {{ .Content }}
-
-            {{ if .Pages }}
-              <ul>
-                {{ range .Pages }}
-                  <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-                {{ end }}
-              </ul>
-            {{ end }}
-          {{ end }}
-          EOF
-
-          cat > /tmp/hugo/layouts/index.html <<'EOF'
-          {{ define "main" }}
-            {{ .Content }}
-          {{ end }}
-          EOF
+          if [ -d ./assets ]; then
+            rsync -av ./assets/ /tmp/hugo/assets/
+          fi
 
       - name: Build Hugo site
         run: |

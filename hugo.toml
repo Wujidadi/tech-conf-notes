@@ -1,0 +1,9 @@
+baseURL = "/"
+languageCode = "zh-tw"
+title = "Markdown Docs"
+hasCJKLanguage = true
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
