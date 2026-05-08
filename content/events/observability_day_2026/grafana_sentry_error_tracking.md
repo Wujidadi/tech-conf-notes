@@ -1,3 +1,7 @@
+---
+title: "Grafana 全家桶的最後一塊拼圖—自建 Sentry 帶你攻略 Error tracking"
+---
+
 # Grafana 全家桶的最後一塊拼圖—自建 Sentry 帶你攻略 Error tracking
 
 > 林宗翰 (Jeff Lin)／Cloud Engineer, SHOPLINE

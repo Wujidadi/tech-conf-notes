@@ -1,3 +1,7 @@
+---
+title: "Beyond Prompt Attacks：用開放技術打造可落地的 LLM 合規防護鏈"
+---
+
 # Beyond Prompt Attacks：用開放技術打造可落地的 LLM 合規防護鏈
 
 > 曲華榮／中華電信研究院 雲端運算研究所 高級研究員

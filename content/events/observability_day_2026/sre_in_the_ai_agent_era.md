@@ -1,3 +1,7 @@
+---
+title: "AI Agent 時代的 SRE：讓 Claude 成為你的 On-Call 夥伴"
+---
+
 # AI Agent 時代的 SRE：讓 Claude 成為你的 On-Call 夥伴
 
 > 羅聖明 (Barry)／Sr. Engineer, Trend Micro

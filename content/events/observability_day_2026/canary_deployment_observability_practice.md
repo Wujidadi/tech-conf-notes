@@ -1,3 +1,7 @@
+---
+title: "金絲雀部署的可觀測性實踐"
+---
+
 # 金絲雀部署的可觀測性實踐
 
 > 謝政廷 (Duran)／Section Manager, TSMC / GitHub Star

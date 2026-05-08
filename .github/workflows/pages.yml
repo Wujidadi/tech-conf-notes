@@ -25,6 +25,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          submodules: recursive
 
       - name: Setup Pages
         id: pages
@@ -46,6 +48,7 @@ jobs:
 
       - name: Build Hugo site
         run: |
+          npm ci
           hugo --destination /tmp/public --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
 
       - name: Upload artifact

@@ -1,3 +1,7 @@
+---
+title: "Metric instrumentation: from Dropwizard to OpenTelemetry"
+---
+
 # Metric instrumentation: from Dropwizard to OpenTelemetry
 
 > 謝朝華 (Paul)／Software Engineer, Taboola
@@ -754,4 +758,3 @@ Taboola 最終選擇 OpenTelemetry，因為它同時支援：
 > 在大規模可觀察性系統中，指標檢測函式庫不只是開發工具，而是平台治理、資料模型、查詢效能與組織採用策略的共同基礎。
 
 從 Dropwizard 到 OpenTelemetry，真正的轉變不只是 API，而是從舊版指標模型走向更語意化、可聚合、可治理、可與追蹤整合的可觀察性基礎。
-

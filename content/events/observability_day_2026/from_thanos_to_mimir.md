@@ -1,3 +1,7 @@
+---
+title: "從 Thanos 到 Mimir 3.0：長期指標基礎設施的光榮進化"
+---
+
 # 從 Thanos 到 Mimir 3.0：長期指標基礎設施的光榮進化
 
 > 許宏翔 (Mike Hsu)／DevOps, OpenNet

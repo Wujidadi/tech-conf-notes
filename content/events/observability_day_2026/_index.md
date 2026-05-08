@@ -1,7 +1,7 @@
-+++
-title = "第一屆 Observability Day 可觀察性技術日"
-showList = false
-+++
+---
+title: "第一屆 Observability Day 可觀察性技術日"
+showList: false
+---
 
 > 2026-04-23 09:00 - 16:50 @ [張榮發基金會國際會議中心](https://maps.app.goo.gl/QKXS7uZYs29nECLE8)
 
