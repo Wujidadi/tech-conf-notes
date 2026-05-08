@@ -1,0 +1,157 @@
+name: Deploy Hugo Markdown Docs
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: latest
+          extended: true
+
+      - name: Create temporary Hugo site
+        run: |
+          mkdir -p /tmp/hugo/content
+          mkdir -p /tmp/hugo/layouts/_default
+
+          # 複製 Markdown 到 Hugo content
+          rsync -av \
+            --include='*/' \
+            --include='*.md' \
+            --exclude='*' \
+            ./ /tmp/hugo/content/
+
+          # Hugo 首頁使用 _index.md
+          if [ -f /tmp/hugo/content/index.md ]; then
+            mv /tmp/hugo/content/index.md /tmp/hugo/content/_index.md
+          fi
+
+          cat > /tmp/hugo/hugo.toml <<'EOF'
+          baseURL = "/"
+          languageCode = "zh-tw"
+          title = "Markdown Docs"
+          hasCJKLanguage = true
+
+          [markup]
+            [markup.goldmark]
+              [markup.goldmark.renderer]
+                unsafe = true
+          EOF
+
+          cat > /tmp/hugo/layouts/_default/baseof.html <<'EOF'
+          <!doctype html>
+          <html lang="zh-Hant">
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
+            <style>
+              body {
+                max-width: 900px;
+                margin: 2rem auto;
+                padding: 0 1rem;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+                line-height: 1.7;
+              }
+              code, pre {
+                font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+              }
+              pre {
+                padding: 1rem;
+                overflow: auto;
+                background: #f6f8fa;
+              }
+              a {
+                color: #0969da;
+              }
+            </style>
+          </head>
+          <body>
+            <main>
+              {{ block "main" . }}{{ end }}
+            </main>
+          </body>
+          </html>
+          EOF
+
+          cat > /tmp/hugo/layouts/_default/single.html <<'EOF'
+          {{ define "main" }}
+            <article>
+              {{ .Content }}
+            </article>
+          {{ end }}
+          EOF
+
+          cat > /tmp/hugo/layouts/_default/list.html <<'EOF'
+          {{ define "main" }}
+            {{ .Content }}
+
+            {{ if .Pages }}
+              <ul>
+                {{ range .Pages }}
+                  <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+                {{ end }}
+              </ul>
+            {{ end }}
+          {{ end }}
+          EOF
+
+          cat > /tmp/hugo/layouts/index.html <<'EOF'
+          {{ define "main" }}
+            {{ .Content }}
+
+            <hr>
+
+            <h2>文件列表</h2>
+            <ul>
+              {{ range .Site.RegularPages }}
+                <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+              {{ end }}
+            </ul>
+          {{ end }}
+          EOF
+
+      - name: Build Hugo site
+        run: |
+          hugo --source /tmp/hugo --destination /tmp/public --minify
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: /tmp/public
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
