@@ -312,6 +312,14 @@
       height: auto;
       border-radius: 12px;
     }
+    .site-footer {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 24px 32px;
+      color: #8b949e;
+      font-size: 0.875rem;
+      text-align: center;
+    }
     @media (min-width: 1540px) {
       .page-toc {
         position: fixed;
@@ -336,9 +344,12 @@
     }
   </style>
 </head>
-<body>
+  <body>
   <main class="markdown-body">
     {{ block "main" . }}{{ end }}
   </main>
-</body>
+  <footer class="site-footer">
+    © {{ now.Year }} CCK, Wujidadi (Taras Alatmiuë).
+  </footer>
+  </body>
 </html>
