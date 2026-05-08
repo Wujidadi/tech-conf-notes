@@ -19,4 +19,4 @@
   {{- $url = (path.Join .Page.File.Dir $destination) | relURL -}}
 {{- end -}}
 
-<a href="{{ $url }}"{{ with .Title }} title="{{ . }}"{{ end }}>{{ .Text }}</a>
+<a href="{{ $url }}" target="_blank" rel="noopener noreferrer"{{ with .Title }} title="{{ . }}"{{ end }}>{{ .Text }}</a>
