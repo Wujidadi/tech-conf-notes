@@ -8,6 +8,19 @@
   <meta name="theme-color" content="#0d1117">
   {{- $pageTitle := partial "page-title-text.html" . -}}
   <title>{{ if ne $pageTitle .Site.Title }}{{ $pageTitle }} | {{ end }}{{ .Site.Title }}</title>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
   <style>
     :root {
       color-scheme: dark;
