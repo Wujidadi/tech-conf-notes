@@ -363,13 +363,27 @@
       font-size: 0.875rem;
       text-align: center;
     }
-    @media (min-width: 1540px) {
-      .page-toc {
-        position: fixed;
-        top: 40px;
-        left: calc(50vw - 490px - 252px);
+    @media (min-width: 1180px) {
+      .markdown-body {
+        max-width: 1280px;
+      }
+      .page-layout {
+        max-width: 980px;
+        margin: 0 auto;
+      }
+      .page-layout.has-toc {
+        display: grid;
+        grid-template-columns: 228px minmax(0, 1fr);
+        gap: 24px;
+        align-items: start;
+        max-width: none;
+        margin: 0;
+      }
+      .page-layout.has-toc .page-toc {
+        position: sticky;
+        top: 24px;
         width: 228px;
-        max-height: calc(100vh - 80px);
+        max-height: calc(100vh - 48px);
         overflow: auto;
         scrollbar-gutter: stable;
       }
