@@ -478,9 +478,9 @@ $$L = \lambda \cdot W$$
 
 其中：
 
-- $$L$$：Queue 中的平均任務數
-- $$\lambda$$：系統吞吐率，例如 samples/s
-- $$W$$：每件事花的處理時間
+- $L$：Queue 中的平均任務數
+- $\lambda$：系統吞吐率，例如 samples/s
+- $W$：每件事花的處理時間
 
 也就是：
 
